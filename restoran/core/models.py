@@ -1,8 +1,19 @@
 from django.db import models
 
 
+class MenuItem(models.Model):
+    title = models.CharField(max_length=100)
+    url = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    url_name = models.SlugField(max_length=100, default="default-slug")
+
+    def __str__(self):
+        return self.name
 
 class Dish(models.Model):
     name = models.CharField(max_length=50)
@@ -11,4 +22,5 @@ class Dish(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='dishes')
     is_valuable = models.BooleanField(default=True)
 
-salads = Category.objects.create(name='Салаты')
+    def __str__(self):
+        return self.name
