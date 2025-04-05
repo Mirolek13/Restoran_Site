@@ -2,14 +2,14 @@ from django.db import models
 
 
 class MenuItem(models.Model):
-    title = models.CharField(max_length=100)
-    url = models.CharField(max_length=200)
+    name = models.CharField(max_length=50, default='default_name')
+    url_name = models.CharField(max_length=100, default="default-slug")
 
     def __str__(self):
         return self.title
 
 class Category(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, default='default_name')
     url_name = models.SlugField(max_length=100, default="default-slug")
 
     def __str__(self):
