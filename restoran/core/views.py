@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Category
 
+categories = Category.objects.all()
 
 main_menu = [
     {'title': 'Меню', 'url_name': 'menu_food'},
@@ -17,7 +19,12 @@ def index(request):
     return render(request, "core/index.html", context=data)
 
 def menu_food_page(request):
-    return render(request, "core/menu.html", {"title": 'Меню', "main_menu": main_menu})
+    data = {
+        "title": 'Меню',
+        "main_menu": main_menu,
+        "categories": categories,
+    }
+    return render(request, "core/menu.html", context=data)
 
 def shopping_cart_page(request):
     return render(request, "core/shopping_cart.html", {"title": 'Кошик', "main_menu": main_menu})
@@ -30,3 +37,45 @@ def about_page(request):
 
 def login_page(request):
     return render(request, "core/login.html", {"title": 'Вхід', "main_menu": main_menu})
+
+def salads_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/salads.html', context=data)
+
+def drinks_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/drinks.html', context=data)
+
+def first_courses_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/first_courses.html', context=data)
+
+def second_courses_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/second_courses.html', context=data)
+
+def main_courses_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/main_courses.html', context=data)
+
+def desserts_page(request):
+    data = {
+        "categories": categories,
+        "main_menu": main_menu,
+    }
+    return render(request, 'core/desserts.html', context=data)
