@@ -30,7 +30,8 @@ def dishes_page(request, url_name):
 
     return render(request, 'core/dishes.html', {
         'category': category,
-        'dishes': dishes
+        'dishes': dishes,
+        "main_menu": MenuItem.objects.all(),
         })
 
 def salads_page(request):
